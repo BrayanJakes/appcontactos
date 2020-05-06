@@ -45,8 +45,9 @@ export class ContactoModalComponent implements OnInit {
   }
 
   nuevoContacto(){
+    const nombre: string = this.form.controls.nombre.value;
     const contacto = {
-      nombre: this.form.controls.nombre.value,
+      nombre: nombre.charAt(0).toUpperCase() + nombre.slice(1),
       telefono: this.form.controls.telefono.value,
       grupo: this.form.controls.grupo.value || 'Sin Grupo',
       email: 'Sin Email'
@@ -60,8 +61,9 @@ export class ContactoModalComponent implements OnInit {
   }
 
   actualizarContacto(){
+    const nombre: string = this.form.controls.nombre.value;
     const contacto = {
-      nombre: this.form.controls.nombre.value,
+      nombre: nombre.charAt(0).toUpperCase() + nombre.slice(1),
       telefono: this.form.controls.telefono.value,
       grupo: this.form.controls.grupo.value || 'Sin Grupo',
       email: this.form.controls.email.value || 'Sin Email'

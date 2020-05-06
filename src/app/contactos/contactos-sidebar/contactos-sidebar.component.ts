@@ -56,6 +56,19 @@ export class ContactosSidebarComponent implements OnInit {
 
       .subscribe((resp: any[]) => {
         resp.forEach(g => this.grupos.push({id: g._id, nombre: g.nombre, active: false}));
+        this.grupos.sort((a, b) => {
+          if (a.nombre === 'Todos' || b.nombre === 'Todos'){
+            return;
+          }
+          if (a.nombre > b.nombre) {
+            return 1;
+          }
+          if (a.nombre < b.nombre) {
+            return -1;
+          }
+          // a must be equal to b
+          return 0;
+         });
       });
   }
 

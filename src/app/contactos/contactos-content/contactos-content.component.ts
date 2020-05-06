@@ -23,7 +23,8 @@ export class ContactosContentComponent implements OnInit {
 
   constructor( private modal: MatDialog,
                public contactoService: ContactosService,
-               private toat: MatSnackBar ) {}
+               private toat: MatSnackBar ) {
+               }
 
   ngOnInit(): void {
     this.listarContacto();
@@ -33,7 +34,9 @@ export class ContactosContentComponent implements OnInit {
         this.contactoService.existeContactoNuevo.next(false);
        }
     });
+
     this.buscarContacto();
+
   }
 
   verContacto(contacto){
@@ -54,6 +57,17 @@ export class ContactosContentComponent implements OnInit {
       this.dataSource.forEach(c => c.check = false);
 
       this.respaldo = this.dataSource;
+      this.respaldo.sort((a, b) => {
+        if (a.nombre > b.nombre) {
+          return 1;
+        }
+        if (a.nombre < b.nombre) {
+          return -1;
+        }
+        // a must be equal to b
+        return 0;
+       });
+
       this.contactoService.buscarPorGrupo.subscribe(resp2 => {
         if (resp2 === 'Todos'){
           return this.dataSource = this.respaldo;
