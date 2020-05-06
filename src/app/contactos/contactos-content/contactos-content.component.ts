@@ -35,7 +35,7 @@ export class ContactosContentComponent implements OnInit {
        }
     });
 
-    this.buscarContacto();
+    setTimeout(() => this.buscarContacto(), 1000);
 
   }
 

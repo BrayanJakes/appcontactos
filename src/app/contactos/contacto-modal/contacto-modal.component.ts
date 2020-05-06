@@ -104,4 +104,15 @@ export class ContactoModalComponent implements OnInit {
     this.toat.open(mensaje, '', {duration: 4000, horizontalPosition: 'left'});
   }
 
+
+  filterFloat(evt, input){
+
+      const key = window.Event ? evt.which : evt.keyCode;
+      if (key >= 48 && key <= 57){
+        return true;
+      }
+      return false;
+  }
+
+
 }

@@ -14,7 +14,9 @@
               <br>
               <mat-form-field appearance="outline">
                 <mat-label>Telefono</mat-label>
-                <input matNativeControl formControlName="telefono" matInput placeholder="Ingresa el telefono...">
+                <input matNativeControl
+                (keypress)="filterFloat($event, this)"
+                formControlName="telefono" matInput placeholder="Ingresa el telefono...">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="form.controls.telefono.errors?.required">Debes colocar el telefono del contacto</mat-error>
               </mat-form-field>
@@ -53,7 +55,7 @@
               <br>
               <mat-form-field appearance="outline">
                 <mat-label>Telefono</mat-label>
-                <input matNativeControl formControlName="telefono" matInput placeholder="Ingresa el telefono...">
+                <input (keypress)="filterFloat($event, this)" matNativeControl formControlName="telefono" matInput placeholder="Ingresa el telefono...">
                 <mat-icon matSuffix>phone</mat-icon>
                 <mat-error *ngIf="form.controls.telefono.errors?.required">Debes colocar el telefono del contacto</mat-error>
               </mat-form-field>
