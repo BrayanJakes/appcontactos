@@ -35,7 +35,6 @@ export class ContactosContentComponent implements OnInit {
        }
     });
 
-    setTimeout(() => this.buscarContacto(), 1000);
 
   }
 
@@ -67,6 +66,8 @@ export class ContactosContentComponent implements OnInit {
         // a must be equal to b
         return 0;
        });
+
+      this.buscarContacto();
 
       this.contactoService.buscarPorGrupo.subscribe(resp2 => {
         if (resp2 === 'Todos'){
