@@ -37,7 +37,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="nombre">
       <th mat-header-cell *matHeaderCellDef> Nombre </th>
-      <td class="posicion-dos" (click)="verContacto(element)" matTooltip="Ver a {{element.nombre}}" mat-cell *matCellDef="let element"> 
+      <td class="posicion-dos" [ngClass]="{'posicion-movil': contactoService.disenoMovil}" (click)="verContacto(element)" matTooltip="Ver a {{element.nombre}}" mat-cell *matCellDef="let element"> 
         <img src="./assets/img/profile.jpg" class="avatar">
         {{element.nombre}}    
       </td>
