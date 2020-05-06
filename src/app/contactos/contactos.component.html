@@ -1,0 +1,79 @@
+<mat-toolbar class="p-5 bg-primary text-white" >
+
+     App Contactos
+    <span class="separador"></span>
+
+          <form class="form-inline">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1"> <mat-icon matSuffix>search</mat-icon></span>
+              </div>
+              <input type="text" #buscador (keyup)="buscarContacto(buscador.value)" class="form-control" placeholder="Busca un contacto..." >
+            </div>
+          </form>
+
+</mat-toolbar> 
+
+<mat-drawer-container class="example-container " *ngIf="ocultarSidebar"  >
+    <mat-drawer #drawer mode="over" >
+        
+        <app-contactos-sidebar></app-contactos-sidebar>
+       
+    </mat-drawer>
+    <mat-drawer-content > 
+
+
+        <div>
+            <app-contactos-content ></app-contactos-content>
+            <button mat-fab class="bg-success sidebar-open"
+            matTooltip="Grupos Disponibles"
+            (click)="drawer.toggle()"  >
+                <mat-icon>group</mat-icon>
+            </button>
+    
+                <button mat-fab class="bg-primary" 
+                matTooltip="Nuevo Contacto"
+                (click)="nuevoContacto()" >
+                    <mat-icon>person_add</mat-icon>
+                  </button>
+
+
+        </div>
+ 
+        
+
+              
+    
+    </mat-drawer-content>
+
+    
+
+  </mat-drawer-container>
+
+
+
+
+        
+
+<div class="container-fluid mt-2" *ngIf="!ocultarSidebar">
+    <div class="row">
+        <div class="col-md-3" >
+            <app-contactos-sidebar></app-contactos-sidebar>
+        </div>
+        <div class="col-md-9">
+            <div class="row">
+                <div class="col-md-10">
+                    <app-contactos-content ></app-contactos-content>
+                </div>
+                <div class="col-md-2">
+                    <button  matTooltip="Nuevo Contacto" mat-fab class="bg-primary" (click)="nuevoContacto()" >
+                        <mat-icon>person_add</mat-icon>
+                      </button>
+        
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  

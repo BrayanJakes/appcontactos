@@ -1,0 +1,27 @@
+mat-drawer{
+    width: 100%;
+
+}
+mat-drawer-container{
+    height: 100% ;
+}
+
+
+mat-list-item{
+    cursor: pointer;
+}
+
+.active{
+    background-color: #0275d8;
+    color: white;
+    border-radius: 20px;
+    border-top-left-radius: 0px;
+}
+
+.sidebar-open{
+    
+    position: fixed;
+    right: 40px;
+    bottom: 90px;
+    
+}

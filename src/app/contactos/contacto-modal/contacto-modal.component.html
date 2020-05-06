@@ -1,0 +1,128 @@
+<div *ngIf="data.option === 'contacto'">
+    <div class="text-center">
+        <img src="./assets/img/profile.jpg" class="avatar">
+        <h2>Nuevo Contacto</h2>
+        <br>
+
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matNativeControl formControlName="nombre" matInput placeholder="Ingresa el nombre...">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="form.controls.nombre.errors?.required">Debes colocar el nombre del contacto</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input matNativeControl formControlName="telefono" matInput placeholder="Ingresa el telefono...">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="form.controls.telefono.errors?.required">Debes colocar el telefono del contacto</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Grupo</mat-label>
+                <mat-select formControlName="grupo">
+                    <mat-option [value]="grupo.nombre === 'Todos' ? 'Sin grupo' : grupo.nombre" *ngFor="let grupo of grupos">
+                        {{grupo.nombre === 'Todos' ? 'Sin grupo' : grupo.nombre}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+    
+              <button mat-raised-button (click)="nuevoContacto()" [disabled]="form.invalid">Guardar</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+<div *ngIf="data.option === 'ver'">
+    <div class="text-center">
+        <img src="./assets/img/profile.jpg" class="avatar">
+        <h2> {{ data.contacto.nombre }} </h2>
+        <br>
+
+        <form [formGroup]="form">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input matNativeControl formControlName="nombre" matInput placeholder="Ingresa el nombre...">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="form.controls.nombre.errors?.required">Debes colocar el nombre del contacto</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input matNativeControl formControlName="telefono" matInput placeholder="Ingresa el telefono...">
+                <mat-icon matSuffix>phone</mat-icon>
+                <mat-error *ngIf="form.controls.telefono.errors?.required">Debes colocar el telefono del contacto</mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matNativeControl formControlName="email" matInput placeholder="Ingresa el email...">
+                <mat-icon matSuffix>email</mat-icon>
+              </mat-form-field>
+              <br>
+              <mat-form-field appearance="outline">
+                <mat-label>Grupo</mat-label>
+                <mat-select formControlName="grupo">
+                    <mat-option [value]="grupo.nombre === 'Todos' ? 'Sin grupo' : grupo.nombre" *ngFor="let grupo of grupos">
+                        {{grupo.nombre === 'Todos' ? 'Sin grupo' : grupo.nombre}}
+                    </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <br>
+    
+              <button mat-raised-button (click)="actualizarContacto()" [disabled]="form.invalid">Guardar</button>
+        </form>
+    </div>
+
+
+</div>
+
+
+<div *ngIf="data.option === 'grupo'">
+    <div class="text-center">
+        <h2> <mat-icon>group</mat-icon> </h2>
+        <h2>Nuevo Grupo</h2>
+        <br>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input matNativeControl [(ngModel)]="nombreGrupo" matInput placeholder="Ingresa el nombre del grupo...">
+            <mat-icon matSuffix>group</mat-icon>
+          </mat-form-field>
+        <br>
+              <button mat-raised-button (click)="nuevoGrupo()" >Guardar</button>
+ 
+    </div>
+
+
+</div>
+
+
+<div *ngIf="data.option === 'eliminarContacto'">
+
+    <div class="text-center">
+        <strong>Seguro que quieres eliminar este contacto?</strong>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" (click)="modalRef.close('No Eliminar')">Cancelar</button> &nbsp;
+        <button mat-raised-button color="warn" (click)="modalRef.close('Eliminar')">Eliminar</button>
+    </div>
+
+</div>
+
+
+<div *ngIf="data.option === 'eliminarVariosContacto'">
+
+    <div class="text-center">
+        <strong>Seguro que quieres eliminar todos estos contactos?</strong>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" (click)="modalRef.close('No Eliminar')">Cancelar</button> &nbsp;
+        <button mat-raised-button color="warn" (click)="modalRef.close('Eliminar')">Eliminar</button>
+    </div>
+
+</div>

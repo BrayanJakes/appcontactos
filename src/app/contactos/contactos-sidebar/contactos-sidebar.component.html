@@ -1,0 +1,46 @@
+<mat-drawer-container class="example-container "  >
+    <mat-drawer #drawer mode="side" >
+    </mat-drawer>
+    <mat-drawer-content > 
+        
+        <mat-list>
+        <div mat-subheader>
+            Grupos de contactos
+            <span class="separador"></span>
+            <button mat-icon-button color="primary" matTooltip="Nuevo Grupo" (click)=" nuevoGrupo()">
+                <mat-icon>add_circle_outline</mat-icon>
+              </button>
+        </div>
+        
+        <mat-list-item *ngFor="let grupo of grupos" [ngClass]="{'active': grupo.active}"
+        (click)="seleccionarGrupo(grupo.id, grupo.nombre)"
+        >
+          <mat-icon mat-list-icon>group</mat-icon>
+          <div mat-line>{{grupo.nombre}}</div>
+          <!-- <div mat-line> {{folder.updated | date}} </div> -->
+          <span class="separador"></span>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item
+            (click)="eliminarGrupo(grupo.id)"
+            ><mat-icon>delete</mat-icon>Eliminar</button>
+          </mat-menu>
+        </mat-list-item>
+      </mat-list>
+
+
+    
+    </mat-drawer-content>
+
+  </mat-drawer-container>
+
+<!-- 
+  <button mat-fab class="bg-success sidebar-open" (click)="drawer.toggle()"  >
+    <mat-icon>group</mat-icon>
+  </button> -->
+
+  
+  
