@@ -70,7 +70,11 @@ export class ContactoModalComponent implements OnInit {
     };
 
     this.contactoService.actualizarContacto(this.data.contacto._id, contacto)
-      .subscribe(resp => this.modalRef.close('Actualizado'));
+      .subscribe(resp => this.modalRef.close('Actualizado'), err => {
+        if (err.name === 'HttpErrorResponse') {
+          return this.alert('Ya existe un contacto con ese numero');
+        }
+      });
   }
 
   listarGrupo(){
